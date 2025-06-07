@@ -1,0 +1,221 @@
+<!-- dashboard-layout.component.html avec Heroicons -->
+<!-- Topbar mobile -->
+<header class="md:hidden h-14 bg-white border-b border-gray-200 flex items-center px-4 justify-between">
+    <button (click)="toggleSidebar()" aria-label="Ouvrir menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+    </button>
+    <h1 class="text-lg font-semibold">BailleurPro</h1>
+
+</header>
+<div class="flex h-screen w-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="hidden md:flex w-72 shrink-0 bg-white border-r border-gray-200 p-6 flex-col justify-between">
+        <div>
+            <div class="flex items-center gap-3 mb-10">
+                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600"></div>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800">BailleurPro</h2>
+                    <p class="text-xs text-gray-400">Admin</p>
+                </div>
+            </div>
+
+            <!-- Section GESTION -->
+            <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Gestion</p>
+            <nav class="flex flex-col gap-2 mb-8">
+                <a routerLink="/dashboard" routerLinkActive="active"
+                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path d="M3 3h18v18H3V3z" />
+                        <path d="M9 9h6v6H9V9z" />
+                    </svg>
+                    Tableau de bord
+                </a>
+
+                <a routerLink="/bails" routerLinkActive="active"
+                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path d="M4 4h16v4H4zM4 12h16v8H4z" />
+                    </svg>
+                    Baux
+                </a>
+
+                <a routerLink="/biens" routerLinkActive="active"
+                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path d="M3 9.75L12 3l9 6.75M4.5 10.5v9h15v-9" />
+                    </svg>
+                    Biens
+                </a>
+
+                <a routerLink="/locataires" routerLinkActive="active"
+                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zM6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                    </svg>
+                    Locataires
+                </a>
+
+                <a routerLink="/loyers" routerLinkActive="active"
+                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M12 8c-3.333 0-5 1.333-5 4s1.667 4 5 4 5-1.333 5-4-1.667-4-5-4zm0 0V6m0 12v-2" />
+                    </svg>
+                    Loyers
+                </a>
+            </nav>
+
+            <!-- Section UTILISATEUR -->
+            <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Préférences</p>
+            <nav class="flex flex-col gap-2">
+                <a routerLink="/profil" routerLinkActive="active"
+                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zM4 20v-1a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1" />
+                    </svg>
+                    Mon profil
+                </a>
+
+                <a routerLink="/parametres" routerLinkActive="active"
+                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.7 0 1.3-.4 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.12.59 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09c0 .7.4 1.3 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01c.3.69.98 1.18 1.75 1.18H21a2 2 0 1 1 0 4h-.09c-.7 0-1.3.4-1.51 1z" />
+                    </svg>
+                    Paramètres
+                </a>
+            </nav>
+        </div>
+
+        <!-- Upgrade Plan -->
+        <div
+            class="bg-gradient-to-br from-purple-500 to-indigo-600 text-white text-sm text-center py-2 px-4 rounded-xl mt-3 shadow">
+            <p class="font-semibold"> Niveau supérieur</p>
+            <p class="text-xs opacity-80">Débloquez les fonctionnalités avancées</p>
+            <button class="mt-3 text-xs bg-white text-purple-700 px-3 py-1 rounded-md font-medium">Passer Pro</button>
+        </div>
+    </aside>
+
+
+    <!-- Sidebar mobile (copie du contenu desktop) -->
+    <!-- Backdrop noir semi-transparent -->
+    <div class="fixed inset-0 backdrop-blur-sm bg-white/30 z-20 md:hidden" *ngIf="isSidebarOpen"
+        (click)="closeSidebar()">
+    </div>
+
+    <!-- Sidebar mobile -->
+    <div class="fixed top-0 left-0 z-30 bg-white w-72 h-full p-6 border-r border-gray-200 flex flex-col justify-between transform transition-transform duration-300 ease-in-out md:hidden"
+        [class.translate-x-0]="isSidebarOpen" [class.-translate-x-full]="!isSidebarOpen">
+
+        <!-- CROIX FERMETURE -->
+        <div class="flex justify-between items-center mb-6">
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600"></div>
+                <div>
+                    <h2 class="text-xl font-semibold text-gray-800">BailleurPro</h2>
+                    <p class="text-xs text-gray-400">Admin</p>
+                </div>
+            </div>
+            <button (click)="closeSidebar()" aria-label="Fermer menu">
+                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+
+        <!-- Section GESTION -->
+        <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Gestion</p>
+        <nav class="flex flex-col gap-2 mb-8">
+            <a routerLink="/dashboard" routerLinkActive="active"
+                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M3 3h18v18H3V3z" />
+                    <path d="M9 9h6v6H9V9z" />
+                </svg>
+                Tableau de bord
+            </a>
+
+            <a routerLink="/bails" routerLinkActive="active"
+                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M4 4h16v4H4zM4 12h16v8H4z" />
+                </svg>
+                Baux
+            </a>
+
+            <a routerLink="/biens" routerLinkActive="active"
+                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M3 9.75L12 3l9 6.75M4.5 10.5v9h15v-9" />
+                </svg>
+                Biens
+            </a>
+
+            <a routerLink="/locataires" routerLinkActive="active"
+                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zM6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                </svg>
+                Locataires
+            </a>
+
+            <a routerLink="/loyers" routerLinkActive="active"
+                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M12 8c-3.333 0-5 1.333-5 4s1.667 4 5 4 5-1.333 5-4-1.667-4-5-4zm0 0V6m0 12v-2" />
+                </svg>
+                Loyers
+            </a>
+        </nav>
+
+        <!-- Section UTILISATEUR -->
+        <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Utilisateur</p>
+        <nav class="flex flex-col gap-2">
+            <a routerLink="/profil" routerLinkActive="active"
+                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                    <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zM4 20v-1a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1" />
+                </svg>
+                Mon profil
+            </a>
+
+            <a routerLink="/parametres" routerLinkActive="active"
+                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round" viewBox="0 0 24 24">
+                    <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.7 0 1.3-.4 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.12.59 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09c0 .7.4 1.3 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01c.3.69.98 1.18 1.75 1.18H21a2 2 0 1 1 0 4h-.09c-.7 0-1.3.4-1.51 1z" />
+                </svg>
+                Paramètres
+            </a>
+        </nav>
+        <div
+            class="bg-gradient-to-br from-purple-500 to-indigo-600 text-white text-sm text-center py-2 px-4 rounded-xl mt-3 shadow">
+            <p class="font-semibold"> Niveau supérieur</p>
+            <p class="text-xs opacity-80">Débloquez les fonctionnalités avancées</p>
+            <button class="mt-0 text-xs bg-white text-purple-700 px-3 py-1 rounded-md font-medium">Passer Pro</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Main content -->
+    <main class="flex-1 bg-gray-50 p-6 overflow-auto">
+        <router-outlet></router-outlet>
+    </main>
+</div>
