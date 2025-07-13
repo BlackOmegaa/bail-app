@@ -40,9 +40,7 @@
             "stylePreprocessorOptions": {
               "includePaths": []
             },
-            "style": {
-              "postcssConfig": "postcss.config.js"
-            }
+            "postcssConfig": "postcss.config.js"
           },
           "configurations": {
             "production": {
