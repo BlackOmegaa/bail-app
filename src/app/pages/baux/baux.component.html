@@ -1,1 +1,141 @@
-<p>baux works!</p>
+<div class="baux-container">
+
+
+    <button class="add-btn" (click)="toggleForm()">+ Ajouter un bail</button>
+    <br><br>
+
+
+    <!-- Modal formulaire -->
+    <div class="modal-backdrop" *ngIf="showForm || selectedBail" (click)="closeAllModals()"></div>
+    <div class="bail-modal" *ngIf="showForm">
+        <form [formGroup]="bailForm" (ngSubmit)="onSubmit()" class="bail-form">
+            <!-- formulaire comme avant... -->
+            <div class="form-group">
+                <label>Date de début</label>
+                <input type="date" formControlName="dateDebut" />
+            </div>
+            <div class="form-group">
+                <label>Date de fin</label>
+                <input type="date" formControlName="dateFin" />
+            </div>
+            <div class="form-group">
+                <label>Loyer mensuel</label>
+                <input type="number" formControlName="montant" />
+            </div>
+            <div class="form-group">
+                <label>Charges mensuelles</label>
+                <input type="number" formControlName="chargesMensuelles" />
+            </div>
+            <div class="form-group">
+                <label>Type de bail</label>
+                <input type="text" formControlName="typeBail" />
+            </div>
+            <div class="form-group">
+                <label>Jour de paiement</label>
+                <input type="number" formControlName="paiementLe" />
+            </div>
+            <div class="form-group">
+                <label>Montant de caution</label>
+                <input type="number" formControlName="caution" />
+            </div>
+            <div class="form-group">
+                <label>Bien</label>
+                <select formControlName="bienId">
+                    <option value="" disabled selected hidden>Choisir un bien</option>
+                    <option *ngFor="let bien of biens" [value]="bien.id">
+                        {{ bien.titre }} — {{ bien.adresse }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Locataire</label>
+                <select formControlName="locataireId">
+                    <option value="" disabled selected hidden>Choisir un locataire</option>
+                    <option *ngFor="let locataire of locataires" [value]="locataire.id">
+                        {{ locataire.prenom }} {{ locataire.nom }} — {{ locataire.email }}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Fichier PDF du bail (optionnel)</label>
+                <input type="file" (change)="onFileSelected($event)" accept="application/pdf" />
+            </div>
+
+            <button type="submit" class="submit-btn">Valider le bail</button>
+        </form>
+    </div>
+
+    <!-- Modal détails bail améliorée -->
+    <div class="bail-modal" *ngIf="selectedBail">
+        <h2>Détails du bail</h2>
+        <div class="bail-details-grid">
+            <div><span class="label">Type :</span> {{ selectedBail.typeBail }}</div>
+            <div><span class="label">Loyer :</span> {{ selectedBail.montant }} €</div>
+            <div><span class="label">Charges :</span> {{ selectedBail.chargesMensuelles || 0 }} €</div>
+            <div><span class="label">Caution :</span> {{ selectedBail.caution }} €</div>
+            <div><span class="label">Période :</span><br>Du {{ selectedBail.dateDebut | date }}<br>au {{
+                selectedBail.dateFin | date }}</div>
+            <div><span class="label">Paiement le :</span> {{ selectedBail.paiementLe }}</div>
+            <div class="col-span-2"><span class="label">Locataire :</span><br>{{ selectedBail.locataire?.prenom }} {{
+                selectedBail.locataire?.nom }} ({{ selectedBail.locataire?.email }})</div>
+            <div class="col-span-2"><span class="label">Bien :</span><br>{{ selectedBail.bien?.titre }} — {{
+                selectedBail.bien?.adresse }}</div>
+
+
+
+            <div *ngIf="selectedBail.documentUrl && !isMobile()" class="col-span-2">
+                <span class="label">Fichier :</span><br>
+                <button class="see-upload" (click)="openDocumentModal()">Voir le bail</button>
+            </div>
+            <div *ngIf="selectedBail.documentUrl && isMobile()">
+                <button class="see-upload" (click)="openPdfInNewTab()">
+                    Afficher le bail
+                </button>
+            </div>
+        </div>
+        <button (click)="selectedBail = null" class="submit-btn">Fermer</button>
+    </div>
+
+
+    <div class="bail-modal pdf-viewer" *ngIf="showPdf && selectedBail?.documentUrl">
+        <h2>Fichier du bail</h2>
+        <iframe *ngIf="getSanitizedDocumentUrl()" [src]="getSanitizedDocumentUrl()" width="100%" height="600px"
+            style="border: none;"></iframe>
+
+        <button (click)="closePdf()" class="see-upload">Fermer le fichier</button>
+    </div>
+
+
+
+    <div class="baux-list">
+        <div class="bail-card" *ngFor="let bail of baux" (click)="openBailModal(bail)">
+            <div class="bail-left">
+                <h3>{{ bail.typeBail || 'Bail' }}</h3>
+                <p class="icon-line">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-7a2 2 0 0 0-2-2h-3V9a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3H2a2 2 0 0 0-2 2v7"></path>
+                        <rect x="7" y="9" width="4" height="12" rx="1"></rect>
+                    </svg>
+                    {{ bail.bien?.titre }}
+                </p>
+
+                <p class="icon-line">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M20 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M4 21v-2a4 4 0 0 1 3-3.87"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    {{ bail.locataire?.prenom }} {{ bail.locataire?.nom }}
+                </p>
+
+            </div>
+            <div class="bail-right">
+                <div class="badge">{{ bail.montant }} € / mois</div>
+                <div class="dates">Du {{ bail.dateDebut | date:'mediumDate' }}<br>au {{ bail.dateFin | date:'mediumDate'
+                    }}</div>
+            </div>
+        </div>
+    </div>
+</div>

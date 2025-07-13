@@ -1,1 +1,71 @@
-<p>loyers works!</p>
+<!-- loyers.component.html (propre avec SVG de qualité) -->
+<div class="loyers-wrapper" *ngIf="paiementsActuels.length > 0; else noData">
+    <div class="paiement-card" *ngFor="let paiement of paiementsActuels">
+        <div class="paiement-header">
+            <div class="mois-annee">{{ getNomMois(paiement.mois) }} {{ paiement.annee }}</div>
+            <span class="statut-badge" [ngClass]="getBadgeClass(paiement.statut)">
+                {{ paiement.statut }}
+            </span>
+        </div>
+        <div class="locataire-name">
+            {{ paiement.locataire?.prenom }} {{ paiement.locataire?.nom }}
+        </div>
+
+        <div class="paiement-details">
+
+            <div class="detail">
+                <span class="label">Montant :</span>
+                <span class="value">{{ paiement.montant | currency:'EUR' }}</span>
+            </div>
+            <div class="detail">
+                <span class="label">Date :</span>
+                <span class="value">{{ paiement.datePaiement | date: 'dd/MM/yyyy'
+                    }}</span>
+            </div>
+        </div>
+
+        <div class="paiement-actions">
+            <!-- SVG : Payé -->
+            <div class="tooltip">
+                <button (click)="changerStatut(paiement, 'payé')" [disabled]="paiement.statut === 'payé'">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span class="tooltiptext">Payé</span>
+                </button>
+            </div>
+
+            <!-- SVG : En retard -->
+            <div class="tooltip">
+                <button (click)="changerStatut(paiement, 'en retard')" [disabled]="paiement.statut === 'en retard'">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    <span class="tooltiptext">En retard</span>
+                </button>
+            </div>
+
+
+
+            <!-- SVG : En cours -->
+            <div class="tooltip">
+                <button (click)="changerStatut(paiement, 'en cours')" [disabled]="paiement.statut === 'en cours'">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span class="tooltiptext">En cours</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #noData>
+    <div class="no-data">Aucun paiement trouvé pour ce mois.</div>
+</ng-template>

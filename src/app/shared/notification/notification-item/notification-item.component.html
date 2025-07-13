@@ -1,0 +1,10 @@
+<div class="notification" [ngClass]="[notification.type, notification.isHiding ? 'hiding' : '']">
+    <span class="icon">
+        <ng-container [ngSwitch]="notification.type">
+            <i *ngSwitchCase="'success'" class="fa-solid fa-check-circle"></i>
+            <i *ngSwitchCase="'error'" class="fa-solid fa-times-circle"></i>
+            <i *ngSwitchCase="'warning'" class="fa-solid fa-exclamation-circle"></i>
+        </ng-container>
+    </span>
+    <span class="message">{{ notification.message }}</span>
+</div>

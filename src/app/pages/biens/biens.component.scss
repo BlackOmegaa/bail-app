@@ -1,0 +1,156 @@
+.biens-container {
+    padding: 2rem;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.add-btn {
+    background-color: #6366f1;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 100;
+}
+
+.bien-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    z-index: 101;
+    width: 95%;
+    max-width: 650px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.bien-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.col-span-2 {
+    grid-column: span 2;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        font-size: 0.85rem;
+        color: #374151;
+        margin-bottom: 0.25rem;
+    }
+
+    input,
+    textarea {
+        padding: 0.6rem;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: #f9fafb;
+    }
+}
+
+.submit-btn {
+    grid-column: span 2;
+    background-color: #16a34a;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.biens-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.bien-card {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: white;
+    border-radius: 12px;
+    border-left: 4px solid #6366f1;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.label {
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.badge {
+    background-color: #e0f2fe;
+    color: #0c4a6e;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 8px;
+
+    &.low {
+        background-color: #fef2f2;
+        color: #991b1b;
+    }
+
+    &.high {
+        background-color: #ecfdf5;
+        color: #065f46;
+    }
+}
+
+.delete-btn {
+    background-color: #dc2626;
+    color: white;
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+::ng-deep .swal-wide-modal {
+    width: 600px !important;
+}

@@ -1,1 +1,87 @@
-<p>biens works!</p>
+<div class="biens-container p-4 sm:p-6 space-y-6">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <h1 class="text-xl sm:text-2xl font-semibold text-gray-800">
+            {{ biens.length }} biens actifs
+        </h1>
+        <div class="flex flex-wrap gap-3">
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition text-sm"
+                (click)="ouvrirFormulaireAjoutBien()">
+                + Ajouter un bien
+            </button>
+            <select class="bg-gray-50 border border-gray-300 rounded-md px-3 py-1.5 text-sm text-gray-700">
+                <option>Type</option>
+            </select>
+            <select class="bg-gray-50 border border-gray-300 rounded-md px-3 py-1.5 text-sm text-gray-700">
+                <option>Statut</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Cards -->
+    <div class="space-y-4">
+        <div *ngFor="let bien of biens" class="bg-white rounded-xl shadow p-4 flex flex-col sm:flex-row gap-4">
+            <!-- Left: image + infos -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full">
+                <img src="house.png" alt="photo bien" class="w-full sm:w-36 h-36 object-cover rounded-lg" />
+                <div class="flex flex-col justify-between flex-1">
+                    <div>
+                        <h3 class="text-base sm:text-lg font-semibold text-gray-800">
+                            {{ bien.titre }}
+                        </h3>
+                        <p class="text-sm text-gray-500">
+                            {{ bien.adresse }}, {{ bien.ville }}
+                        </p>
+                        <p class="text-sm font-medium text-gray-700">
+                            {{ bien.loyerMensuel }} €/mois
+                        </p>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="flex gap-2 mt-3 sm:mt-4">
+                        <button class="p-2 rounded hover:bg-gray-100 text-gray-600" (click)="voirDetails(bien)">
+                            <i class="pi pi-eye"></i>
+                        </button>
+                        <button class="p-2 rounded hover:bg-gray-100 text-gray-600" (click)="modifierBien(bien)">
+                            <i class="pi pi-pencil"></i>
+                        </button>
+                        <button class="p-2 rounded hover:bg-gray-100 text-red-500" (click)="deleteBien(bien.id)">
+                            <i class="pi pi-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: rentabilité -->
+            <div class="flex sm:flex-col items-start sm:items-end justify-between sm:justify-start gap-2 mt-4 sm:mt-0">
+                <span class="text-xs px-2 py-1 rounded-full font-medium" [ngClass]="{
+            'bg-green-100 text-green-700': getRentabilite(bien) >= 8,
+            'bg-yellow-100 text-yellow-700': getRentabilite(bien) >= 5 && getRentabilite(bien) < 8,
+            'bg-red-100 text-red-700': getRentabilite(bien) < 5
+          }">
+                    {{
+                    getRentabilite(bien) >= 8
+                    ? 'Excellente'
+                    : getRentabilite(bien) >= 5
+                    ? 'Moyenne'
+                    : 'Faible'
+                    }}
+                </span>
+                <div class="h-2 w-24 bg-gray-200 rounded-full overflow-hidden">
+                    <div class="h-full bg-blue-500 transition-all duration-300" [style.width.%]="
+              getRentabilite(bien) >= 10
+                ? 100
+                : getRentabilite(bien) >= 8
+                ? 80
+                : getRentabilite(bien) >= 5
+                ? 60
+                : 30
+            "></div>
+                </div>
+                <p class="text-xs text-gray-400">
+                    Rentabilité : {{ getRentabilite(bien) | number: '1.0-0' }}%
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

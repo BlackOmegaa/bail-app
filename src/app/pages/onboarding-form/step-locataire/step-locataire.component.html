@@ -1,0 +1,26 @@
+<div class="step-locataire">
+    <h2 class="title">Ajoutez votre locataire</h2>
+    <p class="subtitle">Un locataire est associé à un bien pour générer un bail.</p>
+
+    <form (ngSubmit)="onSubmit()" #locataireForm="ngForm">
+        <div class="form-group">
+            <label>Nom complet</label>
+            <input type="text" [(ngModel)]="locataire.nom" name="nom" required placeholder="Jean Dupont" />
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" [(ngModel)]="locataire.email" name="email" required
+                placeholder="jean.dupont@email.com" />
+        </div>
+
+        <div class="form-group">
+            <label>Téléphone</label>
+            <input type="tel" [(ngModel)]="locataire.tel" name="tel" required placeholder="0601020304" />
+        </div>
+
+        <button type="submit" [disabled]="!locataireForm.form.valid" class="next-btn">
+            Suivant
+        </button>
+    </form>
+</div>

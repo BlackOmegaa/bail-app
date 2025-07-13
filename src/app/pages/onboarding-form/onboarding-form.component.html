@@ -1,0 +1,33 @@
+<div class="onboarding-wrapper">
+    <!-- Progress bar -->
+    <div class="progress-bar">
+        <div class="progress-fill" [style.width.%]="getProgressPercentage()"></div>
+    </div>
+
+    <!-- Dynamic step container -->
+    <div class="step-container">
+        <ng-container [ngSwitch]="currentStep">
+            <app-step-zero *ngSwitchCase="0" (next)="handleStepZeroNext($event)">
+            </app-step-zero>
+
+            <app-step-bien *ngSwitchCase="1" (next)="goToNextStep()">
+            </app-step-bien>
+
+            <div *ngIf="hasProperty">
+                <app-step-locataire *ngSwitchCase="2" (next)="goToNextStep()">
+                </app-step-locataire>
+            </div>
+
+            <div *ngIf="!hasProperty">
+                <app-step-bail *ngSwitchCase="2" (next)="finishOnboarding()">
+                </app-step-bail>
+            </div>
+
+            <div *ngIf="hasProperty">
+                <app-step-bail *ngSwitchCase="3" (next)="finishOnboarding()">
+                </app-step-bail>
+            </div>
+
+        </ng-container>
+    </div>
+</div>

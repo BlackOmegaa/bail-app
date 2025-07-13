@@ -1,0 +1,32 @@
+<div class="step-bien">
+    <h2 class="title">Ajoutez les informations de votre bien</h2>
+    <p class="subtitle">Cela permettra de le retrouver facilement par la suite.</p>
+
+    <form (ngSubmit)="onSubmit()" #bienForm="ngForm">
+        <div class="form-group">
+            <label>Nom du bien</label>
+            <input type="text" [(ngModel)]="bien.nom" name="nom" required placeholder="Appartement T2 centre-ville" />
+        </div>
+
+        <div class="form-group">
+            <label>Adresse</label>
+            <input type="text" [(ngModel)]="bien.adresse" name="adresse" required
+                placeholder="12 rue du Général Leclerc, 75000 Paris" />
+        </div>
+
+        <div class="form-group">
+            <label>Type de bien</label>
+            <select [(ngModel)]="bien.type" name="type" required>
+                <option value="" disabled selected>Sélectionnez</option>
+                <option value="Appartement">Appartement</option>
+                <option value="Maison">Maison</option>
+                <option value="Studio">Studio</option>
+                <option value="Autre">Autre</option>
+            </select>
+        </div>
+
+        <button type="submit" [disabled]="!bienForm.form.valid" class="next-btn">
+            Suivant
+        </button>
+    </form>
+</div>

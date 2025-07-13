@@ -11,7 +11,7 @@
         .card-value {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #1F2937;
+            color: #1f2937;
         }
 
         .card:hover {
@@ -35,8 +35,34 @@
             /* text-2xl */
             font-weight: 700;
             /* font-bold */
-            color: #1F2937;
+            color: #dfc7fe;
             /* text-gray-800 */
         }
+    }
+}
+
+.notification-card {
+    .p-carousel {
+        .p-carousel-content {
+            padding: 0.5rem 0;
+        }
+
+        .p-carousel-prev,
+        .p-carousel-next {
+            background: transparent;
+            border: none;
+            color: #6366f1;
+            font-size: 1.25rem;
+        }
+
+        .p-carousel-prev:focus,
+        .p-carousel-next:focus {
+            box-shadow: none;
+        }
+    }
+
+    .notification-carousel {
+        display: flex;
+        justify-content: center;
     }
 }

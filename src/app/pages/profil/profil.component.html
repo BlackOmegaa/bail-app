@@ -1,1 +1,33 @@
-<p>profil works!</p>
+<div class="profile-wrapper" *ngIf="user">
+    <h2>Mon Profil</h2>
+
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+        <label>Nom complet</label>
+        <input formControlName="name" />
+
+        <label>Email</label>
+        <input formControlName="email" />
+
+        <div class="actions">
+            <button type="submit">Mettre à jour</button>
+            <button type="button" class="secondary" (click)="showPasswordModal = true">
+                Modifier le mot de passe
+            </button>
+        </div>
+    </form>
+
+    <div class="message success" *ngIf="successMessage">{{ successMessage }}</div>
+    <div class="message error" *ngIf="errorMessage">{{ errorMessage }}</div>
+</div>
+
+<!-- MODALE -->
+<div class="modal-overlay" *ngIf="showPasswordModal" (click)="showPasswordModal = false"></div>
+<div class="modal" *ngIf="showPasswordModal">
+    <h3>Changer de mot de passe</h3>
+    <form [formGroup]="passwordForm" (ngSubmit)="updatePassword()">
+        <input type="password" placeholder="Mot de passe actuel" formControlName="oldPassword" />
+        <input type="password" placeholder="Nouveau mot de passe" formControlName="newPassword" />
+        <button type="submit">Valider</button>
+        <button type="button" class="cancel" (click)="showPasswordModal = false">Annuler</button>
+    </form>
+</div>

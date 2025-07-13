@@ -7,7 +7,7 @@
             <path d="M4 6h16M4 12h16M4 18h16" />
         </svg>
     </button>
-    <h1 class="text-lg font-semibold">BailleurPro</h1>
+    <h1 class="text-lg font-semibold">Novilok</h1>
 
 </header>
 <div class="flex h-screen w-screen overflow-hidden bg-gray-500">
@@ -16,9 +16,9 @@
         class="hidden md:flex w-72 shrink-0 bg-white border-r border-gray-100 shadow-sm p-6 flex-col justify-between">
         <div>
             <div class="flex items-center gap-3 mb-10">
-                <div class="h-10 w-10 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600"></div>
+                <img src="logo.png" style="width: 60px; height: 60px;" alt="Logo Novilok">
                 <div>
-                    <h2 class="text-xl font-semibold text-gray-800">BailleurPro</h2>
+                    <h2 class="text-xl font-semibold text-gray-800">Novilok</h2>
                     <p class="text-xs text-gray-400">Admin</p>
                 </div>
             </div>
@@ -27,43 +27,71 @@
             <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Gestion</p>
             <nav class="flex flex-col gap-2 mb-8">
                 <a routerLink="/dashboard" routerLinkActive="active"
-                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M3 3h18v18H3V3z" />
-                        <path d="M9 9h6v6H9V9z" />
+                    class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard">
+                        <rect width="7" height="9" x="3" y="3" rx="1" />
+                        <rect width="7" height="5" x="14" y="3" rx="1" />
+                        <rect width="7" height="9" x="14" y="12" rx="1" />
+                        <rect width="7" height="5" x="3" y="16" rx="1" />
                     </svg>
                     Tableau de bord
                 </a>
 
                 <a routerLink="/bails" routerLinkActive="active"
-                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M4 4h16v4H4zM4 12h16v8H4z" />
+                    class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-notepad-text-icon lucide-notepad-text">
+                        <path d="M8 2v4" />
+                        <path d="M12 2v4" />
+                        <path d="M16 2v4" />
+                        <rect width="16" height="18" x="4" y="4" rx="2" />
+                        <path d="M8 10h6" />
+                        <path d="M8 14h8" />
+                        <path d="M8 18h5" />
                     </svg>
                     Baux
                 </a>
 
                 <a routerLink="/biens" routerLinkActive="active"
-                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M3 9.75L12 3l9 6.75M4.5 10.5v9h15v-9" />
+                    class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-house-plus-icon lucide-house-plus">
+                        <path
+                            d="M12.662 21H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v2.475" />
+                        <path d="M14.959 12.717A1 1 0 0 0 14 12h-4a1 1 0 0 0-1 1v8" />
+                        <path d="M15 18h6" />
+                        <path d="M18 15v6" />
                     </svg>
                     Biens
                 </a>
 
                 <a routerLink="/locataires" routerLinkActive="active"
-                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zM6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                    class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-users-round-icon lucide-users-round">
+                        <path d="M18 21a8 8 0 0 0-16 0" />
+                        <circle cx="10" cy="8" r="5" />
+                        <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
                     </svg>
                     Locataires
                 </a>
 
                 <a routerLink="/loyers" routerLinkActive="active"
-                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M12 8c-3.333 0-5 1.333-5 4s1.667 4 5 4 5-1.333 5-4-1.667-4-5-4zm0 0V6m0 12v-2" />
+                    class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-hand-coins-icon lucide-hand-coins">
+                        <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+                        <path
+                            d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+                        <path d="m2 16 6 6" />
+                        <circle cx="16" cy="9" r="2.9" />
+                        <circle cx="6" cy="5" r="3" />
                     </svg>
                     Loyers
                 </a>
@@ -73,20 +101,24 @@
             <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Préférences</p>
             <nav class="flex flex-col gap-2">
                 <a routerLink="/profil" routerLinkActive="active"
-                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                        <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zM4 20v-1a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1" />
+                    class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-user-round-icon lucide-user-round">
+                        <circle cx="12" cy="8" r="5" />
+                        <path d="M20 21a8 8 0 0 0-16 0" />
                     </svg>
                     Mon profil
                 </a>
 
                 <a routerLink="/parametres" routerLinkActive="active"
-                    class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                        stroke-linejoin="round" viewBox="0 0 24 24">
-                        <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                    class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-settings-icon lucide-settings">
                         <path
-                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.7 0 1.3-.4 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.12.59 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09c0 .7.4 1.3 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01c.3.69.98 1.18 1.75 1.18H21a2 2 0 1 1 0 4h-.09c-.7 0-1.3.4-1.51 1z" />
+                            d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                        <circle cx="12" cy="12" r="3" />
                     </svg>
                     Paramètres
                 </a>
@@ -135,43 +167,71 @@
         <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Gestion</p>
         <nav class="flex flex-col gap-2 mb-8">
             <a routerLink="/dashboard" routerLinkActive="active"
-                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                    <path d="M3 3h18v18H3V3z" />
-                    <path d="M9 9h6v6H9V9z" />
+                class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard">
+                    <rect width="7" height="9" x="3" y="3" rx="1" />
+                    <rect width="7" height="5" x="14" y="3" rx="1" />
+                    <rect width="7" height="9" x="14" y="12" rx="1" />
+                    <rect width="7" height="5" x="3" y="16" rx="1" />
                 </svg>
                 Tableau de bord
             </a>
 
             <a routerLink="/bails" routerLinkActive="active"
-                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                    <path d="M4 4h16v4H4zM4 12h16v8H4z" />
+                class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-notepad-text-icon lucide-notepad-text">
+                    <path d="M8 2v4" />
+                    <path d="M12 2v4" />
+                    <path d="M16 2v4" />
+                    <rect width="16" height="18" x="4" y="4" rx="2" />
+                    <path d="M8 10h6" />
+                    <path d="M8 14h8" />
+                    <path d="M8 18h5" />
                 </svg>
                 Baux
             </a>
 
             <a routerLink="/biens" routerLinkActive="active"
-                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                    <path d="M3 9.75L12 3l9 6.75M4.5 10.5v9h15v-9" />
+                class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-house-plus-icon lucide-house-plus">
+                    <path
+                        d="M12.662 21H5a2 2 0 0 1-2-2v-9a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v2.475" />
+                    <path d="M14.959 12.717A1 1 0 0 0 14 12h-4a1 1 0 0 0-1 1v8" />
+                    <path d="M15 18h6" />
+                    <path d="M18 15v6" />
                 </svg>
                 Biens
             </a>
 
             <a routerLink="/locataires" routerLinkActive="active"
-                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zM6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-users-round-icon lucide-users-round">
+                    <path d="M18 21a8 8 0 0 0-16 0" />
+                    <circle cx="10" cy="8" r="5" />
+                    <path d="M22 20c0-3.37-2-6.5-4-8a5 5 0 0 0-.45-8.3" />
                 </svg>
                 Locataires
             </a>
 
             <a routerLink="/loyers" routerLinkActive="active"
-                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M12 8c-3.333 0-5 1.333-5 4s1.667 4 5 4 5-1.333 5-4-1.667-4-5-4zm0 0V6m0 12v-2" />
+                class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-hand-coins-icon lucide-hand-coins">
+                    <path d="M11 15h2a2 2 0 1 0 0-4h-3c-.6 0-1.1.2-1.4.6L3 17" />
+                    <path
+                        d="m7 21 1.6-1.4c.3-.4.8-.6 1.4-.6h4c1.1 0 2.1-.4 2.8-1.2l4.6-4.4a2 2 0 0 0-2.75-2.91l-4.2 3.9" />
+                    <path d="m2 16 6 6" />
+                    <circle cx="16" cy="9" r="2.9" />
+                    <circle cx="6" cy="5" r="3" />
                 </svg>
                 Loyers
             </a>
@@ -181,20 +241,24 @@
         <p class="uppercase text-xs text-gray-400 font-semibold mb-2">Utilisateur</p>
         <nav class="flex flex-col gap-2">
             <a routerLink="/profil" routerLinkActive="active"
-                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-                    <path d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5zM4 20v-1a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v1" />
+                class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-user-round-icon lucide-user-round">
+                    <circle cx="12" cy="8" r="5" />
+                    <path d="M20 21a8 8 0 0 0-16 0" />
                 </svg>
                 Mon profil
             </a>
 
             <a routerLink="/parametres" routerLinkActive="active"
-                class="flex items-center gap-3 text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-medium">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                    stroke-linejoin="round" viewBox="0 0 24 24">
-                    <path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                class="flex items-center gap-3 text-sm text-gray-600 px-3 py-2 rounded-md transition-all duration-200 hover:bg-indigo-50 hover:text-indigo-600 hover:translate-x-1 font-light">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-settings-icon lucide-settings">
                     <path
-                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09c.7 0 1.3-.4 1.51-1a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06c.46.46 1.12.59 1.82.33h.01a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09c0 .7.4 1.3 1 1.51a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.01c.3.69.98 1.18 1.75 1.18H21a2 2 0 1 1 0 4h-.09c-.7 0-1.3.4-1.51 1z" />
+                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                    <circle cx="12" cy="12" r="3" />
                 </svg>
                 Paramètres
             </a>
@@ -209,6 +273,56 @@
 
 
 
+    <!-- Topbar globale fixée (uniquement en desktop) -->
+    <header class="hidden md:flex fixed top-0 left-72 right-0 h-14 bg-white z-40 items-center justify-between px-6 ">
+        <div class="flex items-center gap-3">
+            <span class="text-lg font-semibold text-gray-800"></span>
+        </div>
+
+        <div class="flex items-center gap-6 relative">
+            <!-- Notification icon with badge -->
+            <div class="relative">
+                <button class="hover:text-indigo-600 transition" title="Notifications">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M15 17h5l-1.405-1.405C18.79 15.21 18 13.83 18 12V8a6 6 0 00-12 0v4c0 1.83-.79 3.21-1.595 3.595L3 17h5m4 0v1a3 3 0 006 0v-1" />
+                    </svg>
+                    <!-- Pastille animée -->
+                    <span *ngIf="unreadCount > 0"
+                        class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-[10px] font-semibold rounded-full flex items-center justify-center animate-ping-slow z-10">
+                        {{ unreadCount }}
+                    </span>
+                </button>
+            </div>
+
+            <!-- User avatar with dropdown -->
+            <!-- Dans la topbar -->
+
+
+
+            <!-- Menu déroulant -->
+            <div class="relative">
+                <button (click)="toggleMenu()" class="focus:outline-none">
+                    <img src="avatar.png" class="w-8 h-8 rounded-full ring-1 ring-gray-300 cursor-pointer" alt="User" />
+                </button>
+
+                <div *ngIf="isMenuOpen" @fadeInOut
+                    class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+                    <a routerLink="/profil" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mon
+                        profil</a>
+                    <a routerLink="/parametres"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Paramètres</a>
+                    <button (click)="auth.logout()"
+                        class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
+
+
+
+        </div>
+    </header>
 
 
 
@@ -216,7 +330,10 @@
 
 
     <!-- Main content -->
-    <main class="flex-1 bg-[#F1F3F4] p-6 overflow-auto">
+    <main class="flex-1 bg-[#F1F3F4] pt-16 md:pt-16 p-6 overflow-auto">
+        <br>
         <router-outlet></router-outlet>
     </main>
+
+
 </div>

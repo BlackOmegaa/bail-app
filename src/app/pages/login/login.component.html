@@ -1,0 +1,85 @@
+<!-- Toast notification -->
+<div *ngIf="errorMessage" [attr.data-key]="toastKey"
+    class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 px-6 py-4 rounded-xl bg-red-100 text-red-700 border border-red-300 shadow-lg animate-slide-in-out transition-all duration-300">
+    <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                d="M18.364 5.636L5.636 18.364M5.636 5.636l12.728 12.728" />
+        </svg>
+        <span class="text-sm font-medium">{{ errorMessage }}</span>
+    </div>
+</div>
+
+
+
+<div class="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div class="w-full max-w-5xl bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+        <!-- Left section with image -->
+        <div class="h-full hidden md:block">
+            <img src="illu2.png" alt="building" class="w-full h-full object-cover">
+        </div>
+
+        <!-- Right section with form -->
+        <div class="p-8 sm:p-10 md:p-12">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold">NomDuSaaS</h1>
+                <a routerLink="/"
+                    class="text-sm bg-gray-100 text-gray-600 px-3 py-1.5 rounded-md hover:bg-gray-200 transition">Retour
+                    au site</a>
+            </div>
+
+            <h2 class="text-3xl font-semibold mb-2">Connexion</h2>
+            <p class="text-gray-500 mb-6">Pas encore de compte ? <a routerLink="/register"
+                    class="font-medium text-indigo-600 hover:underline">Créer un compte</a></p>
+
+            <form (ngSubmit)="onLogin()" class="space-y-4">
+                <div>
+                    <input type="email" name="email" [(ngModel)]="email" required placeholder="Adresse email"
+                        class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                </div>
+
+                <div class="relative">
+                    <input [type]="showPassword ? 'text' : 'password'" name="password" [(ngModel)]="password" required
+                        placeholder="Mot de passe"
+                        class="w-full border border-gray-200 rounded-lg px-4 py-2.5 text-gray-800 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                    <button type="button" (click)="showPassword = !showPassword"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700">
+                        <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.978 9.978 0 012.171-3.317m3.234-2.525A9.956 9.956 0 0112 5c4.478 0 8.268 2.943 9.542 7a9.973 9.973 0 01-4.397 5.033M3 3l18 18" />
+                        </svg>
+                    </button>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-indigo-500 hover:bg-indigo-600 text-white font-semibold py-2.5 rounded-lg transition">Se
+                    connecter</button>
+            </form>
+
+            <div class="flex items-center my-6">
+                <div class="flex-grow border-t border-gray-200"></div>
+                <span class="px-4 text-sm text-gray-400">Ou connectez-vous avec</span>
+                <div class="flex-grow border-t border-gray-200"></div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-3">
+                <button type="button"
+                    class="w-full border border-gray-300 rounded-lg py-2 flex items-center justify-center gap-2 hover:bg-gray-50">
+                    <img src="google.png" alt="Google" class="w-5 h-5" /> Google
+                </button>
+                <button type="button" disabled
+                    class="w-full border border-gray-300 rounded-lg py-2 flex items-center justify-center gap-2 opacity-50 cursor-not-allowed">
+                    <img src="apple.png" alt="Apple" class="w-5 h-5" /> Apple
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

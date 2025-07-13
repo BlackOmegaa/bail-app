@@ -1,1 +1,250 @@
-<p>locataires works!</p>
+<div class="flex flex-col md:flex-row min-h-screen transition-all duration-500">
+    <!-- Sidebar Locataires -->
+    <div class="w-full md:w-1/4 bg-white p-4 border-b md:border-b-0 md:border-r border-gray-200 overflow-auto">
+        <h2 class="text-xl font-semibold mb-4">Locataires</h2>
+        <button (click)="ajouterLocataire()"
+            class="mb-4 w-full flex items-center justify-center gap-2 text-white bg-indigo-600 hover:bg-indigo-700 transition rounded-lg px-4 py-2 shadow font-medium text-sm animate-fade">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+            </svg>
+            Ajouter un locataire
+        </button>
+
+        <div *ngFor="let loc of locataires" (click)="openDetails(loc)"
+            [class.bg-indigo-50]="selectedLocataire?.id === loc.id"
+            class="group cursor-pointer mb-3 p-3 rounded-lg shadow-sm transition-all duration-300 hover:bg-indigo-100 animate-fade">
+
+            <div class="flex items-center gap-3">
+                <div class="relative w-12 h-12">
+                    <img [src]="'user4.png'" class="rounded-full w-full h-full object-cover" alt="Avatar">
+                    <div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold"
+                        [ngClass]="{
+                'bg-black-500 text-white': loc.fiabilite && loc.fiabilite == 0,
+                'bg-blue-500 text-white': loc.fiabilite && loc.fiabilite == 100,
+                'bg-green-500 text-white': loc.fiabilite && loc.fiabilite >= 75 && loc.fiabilite < 100,
+                'bg-yellow-400 text-white': loc.fiabilite && loc.fiabilite < 75 && loc.fiabilite >= 50,
+                'bg-red-500 text-white': loc.fiabilite && loc.fiabilite < 50
+              }">
+                        <svg *ngIf="loc.fiabilite && loc.fiabilite >= 75 && loc.fiabilite < 100"
+                            xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                            stroke="#fff">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <svg *ngIf="loc.fiabilite && loc.fiabilite < 75 && loc.fiabilite >= 50"
+                            xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
+                            stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-triangle-alert-icon lucide-triangle-alert">
+                            <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" />
+                            <path d="M12 9v4" />
+                            <path d="M12 17h.01" />
+                        </svg>
+                        <svg *ngIf="loc.fiabilite && loc.fiabilite < 50" xmlns="http://www.w3.org/2000/svg"
+                            class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="#fff">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                        <svg *ngIf="loc.fiabilite && loc.fiabilite == 100" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-flame-icon lucide-flame">
+                            <path
+                                d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+                        </svg>
+
+                        <svg *ngIf="loc.fiabilite && loc.fiabilite == 0" xmlns="http://www.w3.org/2000/svg" width="24"
+                            height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-skull-icon lucide-skull">
+                            <path d="m12.5 17-.5-1-.5 1h1z" />
+                            <path
+                                d="M15 22a1 1 0 0 0 1-1v-1a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20v1a1 1 0 0 0 1 1z" />
+                            <circle cx="15" cy="12" r="1" />
+                            <circle cx="9" cy="12" r="1" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="flex flex-col">
+                    <span class="font-medium">{{ loc.prenom }} {{ loc.nom }}</span>
+                    <span class="text-sm text-gray-500">Fiabilité</span>
+                    <div class="mt-1">
+                        <div class="w-32 h-1 rounded-full bg-gray-300 overflow-hidden">
+                            <div class="h-1 rounded-full transition-all duration-500" [style.width.%]="loc.fiabilite"
+                                style="background: linear-gradient(to right, #7f5af0, #6246ea)">
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <span class="ml-auto text-xs px-2 py-1 rounded-full text-white" [ngClass]="{
+            'bg-green-500': loc.bailId,
+            'bg-gray-400': !loc.bailId
+          }">
+                    {{ loc.bailId ? 'Actif' : 'Inactif' }}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div
+        class="w-full md:w-3/4 p-4 sm:p-6 space-y-6 bg-gray-50 rounded-tr-xl rounded-br-xl transition-all duration-500">
+        <ng-container *ngIf="selectedLocataire; else noLocataire">
+
+            <!-- Message d’alerte -->
+            <div *ngIf="selectedLocataire" class="mt-4 px-4 py-3 rounded-lg flex items-center gap-3" [ngClass]="{
+    'bg-blue-100 text-blue-800': getMessageFiabilite(selectedLocataire).includes('irréprochable'),
+    'bg-green-100 text-green-800': getMessageFiabilite(selectedLocataire).includes('fiable'),
+    'bg-yellow-100 text-yellow-800': getMessageFiabilite(selectedLocataire).includes('tendance'),
+    'bg-red-100 text-red-800': getMessageFiabilite(selectedLocataire).includes('ne paye plus'),
+    'bg-gray-100 text-gray-800': getMessageFiabilite(selectedLocataire).includes('Pas assez')
+  }">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M12 20.5A8.5 8.5 0 1 1 20.5 12 8.5 8.5 0 0 1 12 20.5z" />
+                </svg>
+                <span class="text-sm font-medium">{{ getMessageFiabilite(selectedLocataire) }}</span>
+            </div>
+
+
+
+            <!-- Infos locataire + détails -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Fiche profil -->
+                <div class="col-span-1 bg-white rounded-xl shadow-md p-5">
+                    <div class="flex flex-col items-center text-center">
+                        <img [src]="'user3.png'" alt="avatar" class="w-40 h-40 rounded-full mb-4">
+                        <h3 class="text-lg font-semibold">{{ selectedLocataire.prenom }} {{ selectedLocataire.nom }}
+                        </h3>
+                        <div class="mt-4 space-y-1 text-sm text-gray-600">
+                            <p><span class="font-medium text-green-600">Email :</span> {{ selectedLocataire.email }}
+                            </p>
+                            <p><span class="font-medium text-indigo-600">Tél :</span> {{ selectedLocataire.tel }}</p>
+                            <p><span class="font-medium text-blue-600">Adresse :</span> {{ selectedLocataire.adresse }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card dédiée aux documents -->
+                <div class="col-span-1 lg:col-span-2 bg-white rounded-xl shadow-md p-5">
+                    <h4 class="text-lg font-semibold mb-4">Documents</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Carte Contrat -->
+                        <div (click)="voirContrat(selectedLocataire)"
+                            class="relative group bg-indigo-100 rounded-xl p-5 shadow flex flex-col items-center justify-center transition hover:scale-[1.02]"
+                            @fadeSlide>
+                            <img src="bail.png" alt="Contrat" class="w-32 h-32 mb-3">
+                            <span class="text-sm font-medium text-gray-700">Contrat</span>
+                            <button (click)="voirContrat(selectedLocataire)"
+                                class="hover:bg-indigo-50 transition cursor-pointer absolute left-1/2 transform -translate-x-1/2 bottom-[-16px] bg-white text-indigo-600 text-xs font-semibold px-3 py-1.5 rounded-full shadow transition opacity-0 group-hover:opacity-100">
+                                VIEW
+                            </button>
+                        </div>
+
+                        <!-- État des lieux -->
+                        <div class="relative group bg-green-100 rounded-xl p-5 shadow flex flex-col items-center justify-center transition hover:scale-[1.02]"
+                            @fadeSlide>
+                            <img src="etat.png" alt="État des lieux" class="w-32 h-32 mb-3">
+                            <span class="text-sm font-medium text-gray-700">État des lieux</span>
+                            <button
+                                class="hover:bg-indigo-50 transition cursor-pointer absolute left-1/2 transform -translate-x-1/2 bottom-[-16px] bg-white text-indigo-600 text-xs font-semibold px-3 py-1.5 rounded-full shadow transition opacity-0 group-hover:opacity-100">
+                                VIEW
+                            </button>
+                        </div>
+
+                        <!-- Quittances -->
+                        <div class="relative group bg-orange-100 rounded-xl p-5 shadow flex flex-col items-center justify-center transition hover:scale-[1.02]"
+                            @fadeSlide>
+                            <img src="quittance.png" alt="Quittances" class="w-32 h-32 mb-3">
+                            <span class="text-sm font-medium text-gray-700">Quittances</span>
+                            <button
+                                class="hover:bg-indigo-50 transition cursor-pointer absolute left-1/2 transform -translate-x-1/2 bottom-[-16px] bg-white text-indigo-600 text-xs font-semibold px-3 py-1.5 rounded-full shadow transition opacity-0 group-hover:opacity-100">
+                                VIEW
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bien lié -->
+                <div class="col-span-1 bg-white rounded-xl shadow-md p-5">
+                    <h4 class="text-lg font-semibold mb-2">Bien lié</h4>
+                    <div class="flex flex-col items-center justify-center relative">
+                        <img src="bien.png" alt="Maison" class="w-32 h-32 mb-4">
+                        <button (click)='voirBienLie(selectedLocataire)'
+                            class="cursor-pointer bg-indigo-600 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow hover:bg-indigo-700 transition">
+                            Afficher
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Historique Paiements -->
+                <div class="col-span-1 bg-white rounded-xl shadow-md p-5">
+                    <h4 class="text-lg font-semibold mb-4">Historique Paiements</h4>
+                    <ul class="text-sm text-gray-700 divide-y divide-gray-100">
+                        <li *ngFor="let p of paiements"
+                            class="flex items-center justify-between py-2 px-2 hover:bg-gray-50 rounded transition">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8 7V3m8 4V3M3 11h18M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span>{{ formatMois(p.mois) }}/{{ p.annee }}</span>
+                            </div>
+                            <span class="text-sm font-medium capitalize" [ngClass]="{
+          'text-green-600': p.statut === 'payé',
+          'text-yellow-600': p.statut === 'en cours',
+          'text-red-600': p.statut === 'en retard',
+          'text-yellow-500': p.statut === 'incomplet',
+          'text-red-500': p.statut === 'trop perçu',
+
+
+
+        }">
+                                {{ p.statut }}
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Fiabilité -->
+                <div class="col-span-1 bg-white rounded-xl shadow-md p-5">
+                    <h4 class="text-lg font-semibold mb-5">Fiabilité</h4>
+                    <div class="flex flex-col items-center justify-center relative">
+                        <div class="absolute top-0 left-0">
+                            <span class="text-xs text-gray-500">Fiabilité</span>
+                        </div>
+                        <div class="relative w-40 h-40">
+                            <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                <path class="text-gray-200" stroke-width="4" stroke="currentColor" fill="none"
+                                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path [attr.stroke-dasharray]="selectedLocataire.fiabilite + ', 100'"
+                                    class="text-indigo-500" stroke-width="4" stroke-linecap="round"
+                                    stroke="currentColor" fill="none"
+                                    d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-sm">
+                                <span class="font-bold text-gray-800">{{ selectedLocataire.fiabilite ?? 0 }}%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-template #noLocataire>
+            <div
+                class="w-full h-full flex flex-col items-center justify-center text-gray-500 animate-fade text-center px-4">
+                <img src="choose.png" alt="Sélectionnez" class="w-40 sm:w-48 mb-4">
+                <p class="text-xl font-medium">Veuillez sélectionner un locataire</p>
+            </div>
+        </ng-template>
+    </div>
+</div>

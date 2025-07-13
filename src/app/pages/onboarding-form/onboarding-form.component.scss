@@ -1,0 +1,48 @@
+.onboarding-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    background-color: #f9f9fc;
+}
+
+.progress-bar {
+    width: 100%;
+    max-width: 600px;
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 100px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #6366f1, #8b5cf6);
+        width: 0%;
+        transition: width 0.4s ease;
+    }
+}
+
+.step-container {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    animation: fadeSlide 0.3s ease-in-out;
+}
+
+@keyframes fadeSlide {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

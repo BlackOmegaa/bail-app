@@ -1,0 +1,15 @@
+<div class="text-center p-4">
+    <ng-container [ngSwitch]="status">
+        <div *ngSwitchCase="'loading'">
+            <p>Connexion bancaire en cours...</p>
+        </div>
+        <div *ngSwitchCase="'success'">
+            <h3>✅ Banque connectée avec succès !</h3>
+            <a routerLink="/dashboard" class="btn btn-primary mt-3">Retour au dashboard</a>
+        </div>
+        <div *ngSwitchCase="'error'">
+            <h3>❌ Erreur lors de la connexion bancaire.</h3>
+            <a routerLink="/" class="btn btn-danger mt-3">Retour à l'accueil</a>
+        </div>
+    </ng-container>
+</div>

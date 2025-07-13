@@ -1,129 +1,350 @@
-<!-- dashboard.component.html amélioré -->
 <div class="space-y-10">
 
-    <!-- Stat Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 ">
-        <div class="bg-white rounded-2xl shadow-md p-5 flex justify-between items-start hover:scale-[1.01] transition">
+
+    <!-- Stat Cards (refonte) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Locataires actifs -->
+        <div class="relative bg-white rounded-2xl shadow-md px-5 py-5 hover:shadow-lg transition">
             <div>
-                <p class="text-sm text-gray-500 mb-2">Locataires actifs</p>
-                <h2 class="text-2xl font-bold text-gray-700">12</h2>
-                <p class="text-sm text-emerald-500 mt-2 flex items-center gap-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M5 12l5-5 5 5" stroke-linecap="round" stroke-linejoin="round" />
+                <p class="text-sm text-gray-500 mb-1">Locataires actifs</p>
+                <h2 class="text-3xl font-semibold text-gray-800">{{ locatairesActifs }}</h2>
+                <p class="text-xs text-blue-500 mt-1">+5% ce mois</p>
+            </div>
+            <div class="absolute top-4 right-4">
+                <div class="w-9 h-9 rounded-md flex items-center justify-center bg-indigo-100">
+                    <svg stroke="#4F46E5" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-users-icon lucide-users">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                        <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                        <circle cx="9" cy="7" r="4" />
                     </svg>
-                    8.5%
+                </div>
+            </div>
+        </div>
+
+        <!-- Baux en cours -->
+        <div class="relative bg-white rounded-2xl shadow-md px-5 py-5 hover:shadow-lg transition">
+            <div>
+                <p class="text-sm text-gray-500 mb-1">Baux en cours</p>
+                <h2 class="text-3xl font-semibold text-gray-800">{{ bauxEnCours }}</h2>
+                <p class="text-xs text-purple-500 mt-1">+2% cette semaine</p>
+            </div>
+            <div class="absolute top-4 right-4">
+                <div class="w-9 h-9 rounded-md flex items-center justify-center bg-purple-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="#9333EA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-scroll-text-icon lucide-scroll-text">
+                        <path d="M15 12h-5" />
+                        <path d="M15 8h-5" />
+                        <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+                        <path
+                            d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loyers encaissés -->
+        <div class="relative bg-white rounded-2xl shadow-md px-5 py-5 hover:shadow-lg transition">
+            <div>
+                <p class="text-sm text-gray-500 mb-1">Loyers encaissés ce mois</p>
+                <h2 class="text-3xl font-semibold text-gray-800">{{ loyersEncaisses }}€</h2>
+                <p class="text-xs mt-1 flex items-center gap-1"
+                    [ngClass]="variationEncaisses >= 0 ? 'text-emerald-500' : 'text-red-500'">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path [attr.d]="variationEncaisses >= 0 ? 'M5 12l5-5 5 5' : 'M19 12l-5 5-5-5'"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    {{ variationEncaisses }}%
                 </p>
             </div>
-            <img src="user.png" alt="icon" class="w-10 h-10 opacity-70" />
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-md p-5 flex justify-between items-start hover:scale-[1.01] transition">
-            <div>
-                <p class="text-sm text-gray-500 mb-2">Baux en cours</p>
-                <h2 class="text-2xl font-bold text-gray-700">9</h2>
-                <p class="text-sm text-emerald-500 mt-2 flex items-center gap-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M5 12l5-5 5 5" stroke-linecap="round" stroke-linejoin="round" />
+            <div class="absolute top-4 right-4">
+                <div class="w-9 h-9 rounded-md flex items-center justify-center bg-emerald-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-banknote-arrow-up-icon lucide-banknote-arrow-up">
+                        <path d="M12 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5" />
+                        <path d="M18 12h.01" />
+                        <path d="M19 22v-6" />
+                        <path d="m22 19-3-3-3 3" />
+                        <path d="M6 12h.01" />
+                        <circle cx="12" cy="12" r="2" />
                     </svg>
-                    1.3%
-                </p>
+                </div>
             </div>
-            <img src="bails.png" alt="icon" class="w-11 h-11 opacity-70" />
         </div>
 
-        <div class="bg-white rounded-2xl shadow-md p-5 flex justify-between items-start hover:scale-[1.01] transition">
+        <!-- Loyers en attente -->
+        <div class="relative bg-white rounded-2xl shadow-md px-5 py-5 hover:shadow-lg transition">
             <div>
-                <p class="text-sm text-gray-500 mb-2">Loyers encaissés ce mois</p>
-                <h2 class="text-2xl font-bold text-gray-700">2970€</h2>
-                <p class="text-sm text-red-500 mt-2 flex items-center gap-1">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M19 12l-5 5-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                <p class="text-sm text-gray-500 mb-1">Loyers en attente ce mois</p>
+                <h2 class="text-3xl font-semibold text-gray-800">{{ loyersAttente }}€</h2>
+                <p class="text-xs text-yellow-500 mt-1">inchangé</p>
+            </div>
+            <div class="absolute top-4 right-4">
+                <div class="w-9 h-9 rounded-md flex items-center justify-center bg-yellow-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="#EAB308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-banknote-x-icon lucide-banknote-x">
+                        <path d="M13 18H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5" />
+                        <path d="m17 17 5 5" />
+                        <path d="M18 12h.01" />
+                        <path d="m22 17-5 5" />
+                        <path d="M6 12h.01" />
+                        <circle cx="12" cy="12" r="2" />
                     </svg>
-                    -4.3%
-                </p>
+                </div>
             </div>
-            <img src="paid.png" alt="icon" class="w-10 h-10 opacity-70" />
         </div>
 
-        <div class="bg-white rounded-2xl shadow-md p-5 flex justify-between items-start hover:scale-[1.01] transition">
-            <div>
-                <p class="text-sm text-gray-500 mb-2">Loyers en attente ce mois</p>
-                <h2 class="text-2xl font-bold text-gray-700">480€</h2>
-            </div>
-            <img src="retard.png" alt="icon" class="w-9 h-9 opacity-70" />
-        </div>
     </div>
 
-    <!-- Bar Chart + Select -->
-    <div class="bg-white rounded-xl shadow-md p-6">
-        <div class="flex justify-between items-center mb-4">
-            <h3 class="text-lg font-semibold text-gray-800">Loyers mensuels</h3>
-            <div class="relative">
-                <select [(ngModel)]="selectedYear"
-                    class="bg-gray-100 text-sm rounded-md pl-3 pr-8 py-1.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none cursor-pointer transition-all">
-                    <option *ngFor="let year of availableYears" [value]="year">{{ year }}</option>
-                </select>
-                <svg class="w-4 h-4 absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
-                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+    <div class="container-global">
+
+
+        <!-- Section : Graphique + Indicateurs à droite -->
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 items-start">
+
+            <!-- Bar Chart -->
+            <div class="bg-white rounded-2xl shadow p-6 w-full">
+
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Paiements mensuels</h3>
+                <p class="text-sm text-gray-400 mb-4">Total reçu selon le mois</p>
+
+
+                <div class="w-full h-[250px] relative">
+                    <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'"
+                        class="w-[full] h-full">
+                    </canvas>
+                </div>
+
+
+
+                <div class="flex justify-around mt-6 text-sm">
+                    <div class="flex items-center gap-2">
+                        <div class="h-4 w-4 rounded-lg bg-blue-200"></div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-500">Total reçu</span>
+                            <span class="font-semibold text-gray-800 text-base">{{this.totalRecu}}€</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="h-4 w-4 rounded-lg bg-gray-200"></div>
+                        <div class="flex flex-col">
+                            <span class="text-gray-500">Total non payé</span>
+                            <span class="font-semibold text-gray-800 text-base">{{this.totalNonPaye}}€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Doughnut Chart -->
+            <div class="bg-white rounded-2xl shadow p-6 w-full ">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Répartition paiements</h3>
+                <p class="text-sm text-gray-400 mb-4">En pourcentage</p>
+
+                <div class="w-full h-[294px] relative flex justify-center items-center">
+                    <canvas baseChart [data]="doughnutChartData" [options]="doughnutChartOptions" [type]="'doughnut'"
+                        class="w-full h-full">
+                    </canvas>
+                </div>
+                <br>
+            </div>
+
+
+
+
+
+            <!-- Indicateurs de droite -->
+            <div class="flex flex-col gap-4 w-full">
+
+                <!-- Taux d’occupation -->
+                <div
+                    class="relative rounded-xl border border-gray-200 bg-white px-6 py-5 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-3">
+                            <!-- Badge OCC -->
+                            <div class="relative flex h-10 w-10 items-center justify-center">
+                                <div
+                                    class="absolute inset-0 rounded-full border border-indigo-400/40 border-t-indigo-500 animate-spin-slow">
+                                </div>
+                                <div class="absolute inset-[3px] rounded-full bg-white"></div>
+                                <span class="relative text-sm font-bold text-indigo-600">OCC</span>
+                            </div>
+                            <!-- Texte + barre -->
+                            <div class="flex flex-col gap-1">
+                                <span class="text-sm font-bold text-gray-900">Taux d’occupation</span>
+                                <div class="h-1.5 w-28 rounded-full bg-gray-300 overflow-hidden">
+                                    <div class="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                                        [style.width.%]="occupationPourcent"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Statut -->
+                        <div class="flex items-center gap-2">
+
+                            <!-- Icône SVG dynamique -->
+                            <div class="h-7 w-7 flex items-center justify-center rounded-md bg-gray-100">
+                                <ng-container [ngSwitch]="occupationIconSvg">
+
+                                    <!-- EXCELLENT -->
+                                    <svg *ngSwitchCase="'excellent'" xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5 text-emerald-500" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-width="2" d="M5 13l4 4L19 7" />
+                                    </svg>
+
+                                    <!-- BON -->
+                                    <svg *ngSwitchCase="'bon'" xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5 text-indigo-500" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-width="2" d="M14 9l-3 3-3-3" />
+                                    </svg>
+
+                                    <!-- MOYEN -->
+                                    <svg *ngSwitchCase="'moyen'" xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5 text-yellow-500" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-width="2" d="M4 12h16" />
+                                    </svg>
+
+                                    <!-- MAUVAIS -->
+                                    <svg *ngSwitchCase="'mauvais'" xmlns="http://www.w3.org/2000/svg"
+                                        class="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+
+                                </ng-container>
+                            </div>
+
+                            <!-- Label dynamique -->
+                            <span class="text-sm font-medium" [ngClass]="{
+          'text-emerald-600': occupationLabel === 'Excellent',
+          'text-indigo-600': occupationLabel === 'Bon',
+          'text-yellow-600': occupationLabel === 'Moyen',
+          'text-red-600': occupationLabel === 'Mauvais'
+        }">
+                                {{ occupationLabel }}
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <app-bank-accounts></app-bank-accounts>
+
+                <!-- NotificationsComponent -->
+                <div class="notification-card p-4 bg-white rounded-xl shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-2">
+                            <i class="pi pi-bell text-indigo-500 text-xl"></i>
+                            <h3 class="font-semibold text-gray-800">Notifications</h3>
+                        </div>
+                    </div>
+
+                    <p-carousel [value]="notifications" [numVisible]="1" [numScroll]="1" circular
+                        [showNavigators]="true" [showIndicators]="false" contentClass="notification-carousel">
+                        <ng-template let-notif pTemplate="item">
+                            <div class="p-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
+                                <div class="text-sm text-gray-700 mb-1 font-medium">
+                                    {{ notif.title }}
+                                </div>
+                                <div class="text-xs text-gray-500">{{ notif.date }}</div>
+                            </div>
+                        </ng-template>
+                    </p-carousel>
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+        <br>
+        <div class="bg-white rounded-2xl shadow-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-lg font-semibold text-gray-800">Suivi des paiements locataires</h3>
+                <div class="relative">
+                    <select [(ngModel)]="selectedMonth"
+                        class="bg-gray-50 text-sm rounded-md pl-3 pr-8 py-1.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none border border-gray-200">
+                        <option *ngFor="let month of availableMonths" [value]="month">{{ month }}</option>
+                    </select>
+                    <svg class="w-4 h-4 absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
+                        fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm text-gray-700">
+                    <thead>
+                        <tr class="text-gray-500 text-xs uppercase tracking-wider border-b border-gray-100">
+                            <th class="px-4 py-2 text-left font-medium">Locataire</th>
+                            <th class="px-4 py-2 text-left font-medium">Logement</th>
+                            <th class="px-4 py-2 text-left font-medium">Période</th>
+                            <th class="px-4 py-2 text-left font-medium">Montant</th>
+                            <th class="px-4 py-2 text-left font-medium">Fiabilité</th>
+                            <th class="px-4 py-2 text-left font-medium">État</th>
+                            <th class="px-4 py-2 text-center"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let paiement of paiements"
+                            class="hover:bg-indigo-50 transition duration-150 border-b border-gray-100">
+                            <td class="px-4 py-3 flex items-center gap-3">
+                                <img [src]="paiement.avatar" alt="avatar" class="w-8 h-8 rounded-full shadow-sm" />
+                                <div>
+                                    <div class="font-semibold text-gray-800">{{ paiement.locataire }}</div>
+                                    <div class="text-xs text-gray-500">{{ paiement.email || '—' }}</div>
+                                </div>
+                            </td>
+                            <td class="px-4 py-3 text-gray-600">{{ paiement.logement }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ paiement.periode }}</td>
+                            <td class="px-4 py-3 font-semibold text-gray-800">{{ paiement.montant }} €</td>
+                            <td class="px-4 py-3">
+                                <div class="flex items-center gap-2">
+                                    <div
+                                        class="w-32 h-2.5 rounded-full bg-gray-200/60 overflow-hidden border border-gray-300 shadow-sm">
+                                        <div class="h-full transition-all duration-500" [ngStyle]="{
+      width: paiement.fiabilite + '%',
+      backgroundColor: getFiabiliteColor(paiement.fiabilite ?? 0)
+    }"></div>
+                                    </div>
+                                    <span class="text-xs text-gray-500">{{ paiement.fiabilite ?? '—' }}%</span>
+                                </div>
+
+                            </td>
+                            <td class="px-4 py-3">
+                                <span class="text-xs font-medium px-3 py-1 rounded-full" [ngClass]="{
+      'bg-green-100 text-green-700': paiement.etat === 'Payé',
+      'bg-yellow-100 text-yellow-700': paiement.etat === 'En cours',
+      'bg-red-100 text-red-700': paiement.etat === 'En retard',
+      'bg-red-100 text-red-600': paiement.etat === 'Trop perçu',
+      'bg-yellow-100 text-yellow-600': paiement.etat === 'Incomplet'
+
+    }">
+                                    {{ paiement.etat }}
+                                </span>
+                            </td>
+
+                            <td class="px-4 py-3 text-right">
+                                <button type="button" pButton icon="pi pi-ellipsis-v"
+                                    class="p-button-text p-button-rounded p-button-plain text-gray-600 hover:text-indigo-600"
+                                    (click)="menu.toggle($event)">
+                                </button>
+                                <p-menu #menu [popup]="true" [model]="getMenuItems(paiement)"></p-menu>
+                            </td>
+
+
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <canvas baseChart [data]="barChartData" [options]="barChartOptions" [type]="'bar'">
-        </canvas>
-    </div>
-
-    <!-- Paiement Table -->
-    <div class="bg-white rounded-2xl shadow p-6">
-        <div class="flex justify-between items-center mb-6">
-            <h3 class="text-lg font-semibold text-gray-800">Suivi des paiements locataires</h3>
-            <div class="relative">
-                <select [(ngModel)]="selectedMonth"
-                    class="bg-gray-100 text-sm rounded-md pl-3 pr-8 py-1.5 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none cursor-pointer transition-all shadow-sm">
-                    <option *ngFor="let month of availableMonths" [value]="month">{{ month }}</option>
-                </select>
-                <svg class="w-4 h-4 absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"
-                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </div>
-        </div>
-
-        <div class="overflow-x-auto">
-            <table class="min-w-full text-sm text-gray-700">
-                <thead>
-                    <tr class="text-white text-xs tracking-wide bg-[#6366f1] uppercase">
-                        <th class="px-6 py-3 text-left">Locataire</th>
-                        <th class="px-6 py-3 text-left">Logement</th>
-                        <th class="px-6 py-3 text-left">Période</th>
-                        <th class="px-6 py-3 text-left">Montant</th>
-                        <th class="px-6 py-3 text-left">Quittance</th>
-                        <th class="px-6 py-3 text-left">État</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let paiement of paiements"
-                        class="hover:bg-indigo-50 transition-colors duration-150 border-b bg-gray-200 border-gray-100">
-                        <td class="px-6 py-4 flex items-center gap-3">
-                            <img [src]="paiement.avatar" alt="avatar" class="w-8 h-8 rounded-full shadow-sm" />
-                            <span class="font-medium text-gray-800">{{ paiement.locataire }}</span>
-                        </td>
-                        <td class="px-6 py-4 text-gray-600">{{ paiement.logement }}</td>
-                        <td class="px-6 py-4 text-gray-600">{{ paiement.periode }}</td>
-                        <td class="px-6 py-4 font-semibold text-gray-800">{{ paiement.montant }}€</td>
-                        <td class="px-6 py-4 text-gray-600">{{ paiement.quittance }}</td>
-                        <td class="px-6 py-4 font-semibold" [ngClass]="{
-            'text-green-600': paiement.etat === 'Payé',
-            'text-yellow-500': paiement.etat === 'En cours',
-            'text-red-500': paiement.etat === 'En retard'
-          }">
-                            {{ paiement.etat }}
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-
-</div>

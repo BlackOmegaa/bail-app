@@ -1,0 +1,196 @@
+.loyers-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+.paiement-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07);
+    padding: 1rem;
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+    }
+
+    .paiement-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+
+        .mois-annee {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .statut-badge {
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: capitalize;
+
+            &.badge-paye {
+                background-color: #e8f5e9;
+                color: #2e7d32;
+            }
+
+            &.badge-en-cours {
+                background-color: #fff9c4;
+                color: #f9a825;
+            }
+
+            &.badge-en-retard {
+                background-color: #ffebee;
+                color: #c62828;
+            }
+        }
+    }
+
+    .paiement-details {
+        margin-bottom: 1rem;
+
+        .detail {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+
+            .label {
+                color: #666;
+            }
+
+            .value {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .paiement-actions {
+        display: flex;
+        justify-content: space-around;
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+
+            .tooltiptext {
+                visibility: hidden;
+                width: 80px;
+                background-color: #333;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 4px 6px;
+                font-size: 0.75rem;
+
+                position: absolute;
+                bottom: 125%;
+                left: 50%;
+                transform: translateX(-50%);
+                opacity: 0;
+                transition: opacity 0.2s ease;
+                pointer-events: none;
+                white-space: nowrap;
+                z-index: 10;
+            }
+
+            &:hover .tooltiptext {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            button {
+                background: none;
+                border: none;
+                cursor: pointer;
+
+                .icon {
+                    width: 20px;
+                    height: 20px;
+                    color: #444;
+                    transition: color 0.2s ease;
+
+                    &:hover {
+                        color: #000;
+                    }
+                }
+
+                &:disabled .icon {
+                    color: #bbb;
+                    cursor: not-allowed;
+                }
+            }
+        }
+    }
+}
+
+.no-data {
+    text-align: center;
+    padding: 2rem;
+    color: #777;
+    font-style: italic;
+}
+
+
+.locataire-name {
+    font-weight: 500;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #555;
+}
+
+.stats-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: #f7f7f7;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    min-width: 160px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+    }
+
+    .stat-title {
+        font-weight: 600;
+        font-size: 0.95rem;
+        margin-bottom: 0.4rem;
+        color: #555;
+    }
+
+    .stat-value {
+        font-size: 1.4rem;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        span {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .positive {
+            color: #2ecc71;
+        }
+
+        .negative {
+            color: #e74c3c;
+        }
+    }
+}

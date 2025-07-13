@@ -1,0 +1,46 @@
+<div class="step-bail">
+    <h2 class="title">Informations du bail</h2>
+    <p class="subtitle">Remplissez les détails essentiels du contrat de location.</p>
+
+    <form (ngSubmit)="onSubmit()" #bailForm="ngForm">
+        <div class="form-group">
+            <label>Date de début du bail</label>
+            <input type="date" [(ngModel)]="bail.debut" name="debut" required />
+        </div>
+
+        <div class="form-group">
+            <label>Date de fin du bail</label>
+            <input type="date" [(ngModel)]="bail.fin" name="fin" required />
+        </div>
+
+        <div class="form-group">
+            <label>Loyer mensuel (€)</label>
+            <input type="number" [(ngModel)]="bail.loyer" name="loyer" required min="0" placeholder="Ex : 750" />
+        </div>
+
+        <div class="form-group">
+            <label>Charges mensuelles (€)</label>
+            <input type="number" [(ngModel)]="bail.charges" name="charges" required min="0" placeholder="Ex : 60" />
+        </div>
+
+        <div class="form-group">
+            <label>Dépôt de garantie (€)</label>
+            <input type="number" [(ngModel)]="bail.depot" name="depot" required min="0" placeholder="Ex : 750" />
+        </div>
+
+        <div class="form-group">
+            <label>Mode de paiement</label>
+            <select [(ngModel)]="bail.modePaiement" name="modePaiement" required>
+                <option value="" disabled selected>Choisir un mode</option>
+                <option value="virement">Virement bancaire</option>
+                <option value="cheque">Chèque</option>
+                <option value="especes">Espèces</option>
+                <option value="prelevement">Prélèvement automatique</option>
+            </select>
+        </div>
+
+        <button type="submit" [disabled]="!bailForm.form.valid" class="next-btn">
+            Terminer
+        </button>
+    </form>
+</div>

@@ -1,0 +1,11 @@
+<div class="step-zero">
+    <h2 class="title">Avez-vous actuellement un bien en location ?</h2>
+    <p class="subtitle">Cela nous permettra d’adapter votre configuration.</p>
+
+    <div class="choice-buttons">
+        <button (click)="select(true)" [class.selected]="selected === true">Oui</button>
+        <button (click)="select(false)" [class.selected]="selected === false">Non</button>
+    </div>
+
+    <button class="next-btn" [disabled]="selected === null" (click)="validate()">Suivant</button>
+</div>
