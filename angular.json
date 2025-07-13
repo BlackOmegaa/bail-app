@@ -36,7 +36,13 @@
               "src/styles.scss",
               "node_modules/primeicons/primeicons.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "stylePreprocessorOptions": {
+              "includePaths": []
+            },
+            "style": {
+              "postcssConfig": "postcss.config.js"
+            }
           },
           "configurations": {
             "production": {
