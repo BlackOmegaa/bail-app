@@ -24,7 +24,7 @@ export interface Bien {
   providedIn: 'root',
 })
 export class BienService {
-  private apiUrl = 'http://localhost:3000/biens'; // à adapter selon env
+  private apiUrl = 'https://bail-app-backend-production.up.railway.app/biens'; // à adapter selon env
 
   constructor(private http: HttpClient) { }
 

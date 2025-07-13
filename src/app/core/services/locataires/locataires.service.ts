@@ -23,7 +23,7 @@ export interface Locataire {
 })
 export class LocataireService {
 
-  private apiUrl = 'http://localhost:3000/locataires';
+  private apiUrl = 'https://bail-app-backend-production.up.railway.app/locataires';
 
   constructor(private http: HttpClient) { }
 

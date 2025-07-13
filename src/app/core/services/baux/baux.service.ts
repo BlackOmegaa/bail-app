@@ -24,7 +24,7 @@ export interface Bail {
   providedIn: 'root',
 })
 export class BauxService {
-  private apiUrl = 'http://localhost:3000/baux';
+  private apiUrl = 'https://bail-app-backend-production.up.railway.app/baux';
 
   constructor(private http: HttpClient) { }
 

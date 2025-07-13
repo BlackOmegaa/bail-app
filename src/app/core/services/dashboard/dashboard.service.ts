@@ -28,7 +28,7 @@ interface DashboardStats {
   providedIn: 'root'
 })
 export class DashboardService {
-  private readonly baseUrl = 'http://localhost:3000/dashboard';
+  private readonly baseUrl = 'https://bail-app-backend-production.up.railway.app/dashboard';
 
   constructor(private http: HttpClient) { }
 

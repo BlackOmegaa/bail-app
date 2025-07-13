@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:3000/auth';
+  private baseUrl = 'https://bail-app-backend-production.up.railway.app/auth';
   private tokenKey = 'token';
 
   constructor(private http: HttpClient, private router: Router) { }

@@ -28,7 +28,7 @@ export interface PaiementStats {
   providedIn: 'root'
 })
 export class PaiementLoyerService {
-  private apiUrl = 'http://localhost:3000/paiements-loyer';
+  private apiUrl = 'https://bail-app-backend-production.up.railway.app/paiements-loyer';
 
   constructor(private http: HttpClient) { }
 

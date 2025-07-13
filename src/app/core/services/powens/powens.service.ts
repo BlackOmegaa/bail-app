@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class PowensService {
-  private readonly apiUrl = 'http://localhost:3000/api/powens';
+  private readonly apiUrl = 'https://bail-app-backend-production.up.railway.app/api/powens';
 
   constructor(private http: HttpClient) { }
 
